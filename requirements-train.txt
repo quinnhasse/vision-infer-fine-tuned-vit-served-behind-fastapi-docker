@@ -1,0 +1,5 @@
+-r requirements.txt
+datasets>=2.16.0
+wandb>=0.16.0
+accelerate>=0.26.0
+evaluate>=0.4.0
