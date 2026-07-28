@@ -191,7 +191,7 @@ def _decode_upload(upload: UploadFile) -> Image.Image:
         img = Image.open(io.BytesIO(raw)).convert("RGB")
     except Exception as exc:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail=f"Could not decode image: {exc}",
         ) from exc
     return img
@@ -247,12 +247,12 @@ async def predict_batch(
     """
     if not images:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail="At least one image is required",
         )
     if len(images) > settings.max_batch_size:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail=f"Batch size exceeds maximum of {settings.max_batch_size}",
         )
     pil_images = [_decode_upload(img) for img in images]
