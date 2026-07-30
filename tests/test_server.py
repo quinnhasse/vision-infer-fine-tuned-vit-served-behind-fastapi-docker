@@ -6,15 +6,11 @@ run without downloading weights.
 
 from __future__ import annotations
 
-import io
 from unittest.mock import MagicMock, patch
 
-import pytest
 from fastapi.testclient import TestClient
-from PIL import Image
 
-from tests.conftest import FAKE_PREDICTIONS, png_bytes
-
+from tests.conftest import png_bytes
 
 # ---------------------------------------------------------------------------
 # Helpers
